@@ -58,7 +58,7 @@ SlothDesk solves this through open innovation:
    ```bash
    ollama run llama3.2:1b
 ### 2. Clone and Setup
-   git clone [https://github.com/YOUR_USERNAME/SlothDesk.git](https://github.com/YOUR_USERNAME/SlothDesk.git)
+   git clone (https://github.com/Richs03/SlothDesk)
 cd SlothDesk
 
 ### 3. Install Dependencies
