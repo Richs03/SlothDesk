@@ -1,67 +1,68 @@
-# SlothDesk
-🦥 SlothDesk Desktop Cleaner
-Clean your messy folders with 100% offline, open-source AI.
+# 🦥 SlothDesk: The "Slow and Steady" Offline File Organizer
 
-SlothDesk is a local-first file organizer built with Python, Streamlit, and Ollama. It reads a short preview of each file, uses a local LLM to decide where it belongs, and suggests a clear filename. Nothing is uploaded anywhere, and nothing moves until you approve it.
+> Channel your inner sloth. Let local open-source AI clean your chaotic Downloads folder so you don't have to.
 
-Features
-Offline and private: runs on your machine through Ollama. No cloud APIs.
-Content-aware: reads the first 600 characters of .pdf, .txt, .md, .csv, .json, and .py files instead of guessing from the extension.
-Reliable output: Pydantic schemas keep the model's answers clean and valid.
-Dry run first: preview every proposed move, new filename, and the AI's reasoning before anything changes.
-Categories
-Files are sorted into one of seven folders:
+[![Built with Ollama](https://img.shields.io/badge/Powered%20by-Ollama-blue.svg)](https://ollama.com)
+[![Framework](https://img.shields.io/badge/UI-Streamlit-FF4B4B.svg)](https://streamlit.io)
+[![Privacy](https://img.shields.io/badge/Data%20Privacy-100%25%20Local-green.svg)](#why-open-source-matters)
+[![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-Category	Examples
-Invoices & Receipts	bills, receipts, payment confirmations
-Work & Documents	reports, notes, letters
-Code & Dev	scripts, source files, project data
-Personal & Identity	IDs, certificates, resumes
-Media & Assets	images, audio, video
-Archives & Installers	zip files, installers
-Miscellaneous	everything else
-Tech Stack
-UI: Streamlit
-Local AI: Ollama (qwen2.5:3b or llama3.2:3b)
-Validation: Pydantic
-PDF parsing: pypdf
-Getting Started
-Requirements: Python 3.10+, Git, and Ollama.
+---
 
-1. Clone the repository
+## 📖 Overview
 
-git clone https://github.com/DeependraGurjar/SlothDesk.git
+**SlothDesk** is an automated desktop tidy-up agent built for the **"Slow and Steady"** open-source AI hackathon. 
+
+Instead of spending hours manually dragging invoices, receipts, code snippets, and installers into designated folders, SlothDesk inspects your chaotic directories, understands the contents, renames files cleanly, and proposes a tidy reorganization plan—all running completely on your local machine.
+
+---
+
+## 🌟 Why Open Source Matters (The Core Philosophy)
+
+Closed-source cloud APIs make privacy impossible for desktop automation. A file organizer needs to touch bank statements, tax documents, ID copies, and proprietary code files. Sending those files across the wire to a remote cloud server is a major security and privacy compromise.
+
+SlothDesk solves this through open innovation:
+
+* **100% Local & Confidential:** Using **Ollama** and open-weight models (`llama3.2:3b`, `llama3.2:1b`, or `qwen2.5:0.5b`), zero bytes of personal data ever leave your machine.
+* **$0 Operational Cost:** No recurring token bills or rate limits. Run it on thousands of files completely free.
+* **Off-Grid Capable:** Operates with no internet connection on a flight, train, or remote workspace.
+* **Model Flexibility:** Swap freely between ultra-fast edge models (`llama3.2:1b`) and complex reasoning models without touching the core application logic.
+
+---
+
+## ✨ Features
+
+- **Hybrid Classification Engine:** Instant 0ms sorting for obvious system files (`.exe`, `.zip`, `.png`) combined with local LLM reasoning for ambiguous text and PDF documents.
+- **Dry-Run Safety Mode:** Inspect the proposed file moves, clean new names, and AI explanations in an interactive table before executing any disk operations.
+- **Pydantic Structured Outputs:** Leverages Ollama's native JSON schema enforcement to ensure predictable, error-free categorization.
+- **Batch Throttle Control:** Process loose files in manageable batches (5–50 at a time) to prevent CPU/memory bottlenecks.
+
+---
+
+## 🛠️ Tech Stack
+
+- **Model Engine:** [Ollama](https://ollama.com) (Running `llama3.2:1b` / `llama3.2:3b`)
+- **Dashboard UI:** [Streamlit](https://streamlit.io)
+- **Document Ingestion:** `pypdf` (local PDF text extraction)
+- **Data Validation:** `pydantic`
+- **Language:** Python 3.10+
+
+---
+
+## 🚀 Quickstart Guide
+
+### 1. Prerequisites
+
+1. Install [Ollama](https://ollama.com/download) for your operating system.
+2. Pull a lightweight model via terminal:
+   ```bash
+   ollama run llama3.2:1b
+### 2. Clone and Setup
+   git clone [https://github.com/YOUR_USERNAME/SlothDesk.git](https://github.com/YOUR_USERNAME/SlothDesk.git)
 cd SlothDesk
-2. Install dependencies
 
-pip install -r requirements.txt
-3. Pull a model
+### 3. Install Dependencies
+     pip install -r requirements.txt
 
-Make sure Ollama is running, then:
-
-ollama pull qwen2.5:3b
-4. Run the app
-
-streamlit run app.py
-The app opens in your browser at http://localhost:8501.
-
-Usage Tips
-Always review the dry-run table before applying changes.
-Test on a small folder first.
-Small models can make mistakes, so skip any suggestion that looks wrong.
-Scanned PDFs have no readable text and will usually land in Miscellaneous.
-Contributing
-Contributions are welcome, including for Hacktoberfest.
-
-Fork the repo
-Create a branch: git checkout -b feature/your-feature
-Commit your changes: git commit -m "Add your feature"
-Push: git push origin feature/your-feature
-Open a Pull Request
-Ideas to work on:
-
-Support for .docx, .xlsx, and images
-Undo option for applied moves
-Custom user-defined categories
-Model selector in the UI
-Duplicate file detection
+### 4. Run the Application
+     streamlit run app.py
